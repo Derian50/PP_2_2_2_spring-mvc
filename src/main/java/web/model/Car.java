@@ -3,11 +3,11 @@ package web.model;
 import org.springframework.context.annotation.Bean;
 
 public class Car {
-    String model;
+    private String model;
 
-    int series;
+    private int series;
 
-    int year;
+    private int year;
 
     public Car(String model, int series, int year) {
         this.model = model;
