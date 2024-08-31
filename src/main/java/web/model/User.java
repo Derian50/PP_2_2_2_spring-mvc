@@ -1,6 +1,9 @@
 package web.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -10,10 +13,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
+    @Length(min = 2, max = 32, message = "Invalid name. Size should be between 2 to 32.")
+    @Pattern(regexp="[\\p{L}]+", message = "Invalid name. You can use only letters.")
     private String name;
 
-    private String lastName;
 
+    @Length(min = 2, max = 32, message = "Invalid last name. Size should be between 2 to 32.")
+    @Pattern(regexp="[\\p{L}]+", message = "Invalid last name. You can use only letters.")
+    private String lastName;
+    @NotEmpty(message = "Invalid email address. Please enter your email address.")
+    @Email(message = "Invalid email address. Please enter a proper email ID.")
     private String email;
 
     public User(String name, String lastName, String email) {

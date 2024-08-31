@@ -10,12 +10,15 @@
     <form method="post" th:action="@{/add}" th:object="${user}">
         <p>First name</p>
         <input id="firstName" placeholder="Enter First Name" th:field="*{name}"/>
+        <p style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</p>
         <br>
         <p>Last name</p>
         <input id="lastName" placeholder="Enter Last Name" th:field="*{lastName}"/>
+        <p style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error</p>
         <br>
         <p>Email</p>
         <input id="email" placeholder="Enter Email" th:field="*{email}"/>
+        <p style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</p>
         <br>
         <p></p>
         <input type="submit" value="Add User">
